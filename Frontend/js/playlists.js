@@ -1,53 +1,53 @@
 var playlist_Marw = [
 
+	
+   
+	{
+		"type": "audio",
+		"artist": "Marw",
+		"title": "Enjoy (Strato Mix)",
+		"audio": "https://funkthetown.net/Audio/Marw/Marw - Enjoy (Strato Mix).wav",
+		"cover": "https://funkthetown.net/images/Marw/Marw - Enjoy (Cover).jpg",
+		"dwn": "https://funkthetown.net/Audio/Marw/Marw - Enjoy (Strato Mix).wav"
+	},
 
-{
-	"type": "audio",
-	"artist": "Marw",
-	"title": "Enjoy (Strato Mix)",
-	"audio": "https://funkthetown.net/Audio/Marw/Enjoy_Mix_Strato.wav",
-	"cover": "https://funkthetown.net/images/Marw/MARW_Enjoy_FINAL.jpg",
-	"dwn": "https://funkthetown.net/Audio/Marw/Enjoy_Mix_Strato.wav"
-},
+	{
+		"type": "audio",
+		"artist": "Marw",
+		"title": "Enjoy (Instru Mix)",
+		"audio": "https://funkthetown.net/Audio/Marw/Marw - Enjoy (Instru Mix).wav",
+		"cover": "https://funkthetown.net/images/Marw/Marw - Enjoy (Cover).jpg",
+		"dwn": "https://funkthetown.net/Audio/Marw/Marw - Enjoy (Instru Mix).wav"
+	},
 
-{
-	"type": "audio",
-	"artist": "Marw",
-	"title": "We Dance, We Love, We Groove (Cut Edit)",
-	"audio": "https://funkthetown.net/Audio/Marw/Marw_-_We_Dance,_We Love,_We Groove_mastered.wav",
-	"cover": "https://funkthetown.net/images/Marw/MARW_Enjoy_FINAL.jpg",
-   "dwn": "https://funkthetown.net/Audio/Marw/Marw_-_We_Dance,_We Love,_We Groove_mastered.wav"
-},
+	{
+		"type": "audio",
+		"artist": "Marw",
+		"title": "Enjoy (Butterfly Mix)",
+		"audio": "https://funkthetown.net/Audio/Marw/Marw - Enjoy (Butterfly Mix).wav",
+		"cover": "https://funkthetown.net/images/Marw/Marw - Enjoy (Cover).jpg",
+		"dwn": "https://funkthetown.net/Audio/Marw/Marw - Enjoy (Butterfly Mix).wav"
+	},
 
- {
- 	"type": "audio",
- 	"artist": "Marw",
- 	"title": "Enjoy (Instru Mix)",
- 	"audio": "https://funkthetown.net/Audio/Marw/Marw-Enjoy.wav",
- 	"cover": "https://funkthetown.net/images/Marw/MARW_Enjoy_FINAL.jpg",
- 	"dwn": "https://funkthetown.net/Audio/Marw/Marw-Enjoy.wav"
- },
-
-
- {
- 	"type": "audio",
- 	"artist": "Marw",
- 	"title": "Enjoy (ButterFly Mix)",
- 	"audio": "https://funkthetown.net/Audio/Marw/Enjoy_(ButterFly_Mix).wav",
- 	"cover": "https://funkthetown.net/images/Marw/MARW_Enjoy_FINAL.jpg",
- 	"dwn": "https://funkthetown.net/Audio/Marw/Enjoy_(ButterFly_Mix).wav"
- },
+// {
+// 	"type": "audio",
+// 	"artist": "Marw",
+// 	"title": "We Dance, We Love, We Groove (Cut Edit)",
+// 	"audio": "https://funkthetown.net/Audio/Marw/Mp3/EP-1/Marw - We Dance, We Love, We Groove (Cut Edit).mp3",
+// 	"cover": "https://funkthetown.net/images/Marw/Marw - Enjoy (Cover).jpg",
+//    "dwn": "https://funkthetown.net/Audio/Marw/Mp3/EP-1/Marw - We Dance, We Love, We Groove (Cut Edit).mp3"
+// },
 
 
 
- {
-	"type": "audio",
- 	"artist": "Marw",
-	"title": "We Dance, We Love, We Groove (Electro Mix)",
- 	"audio": "https://funkthetown.net/Audio/Marw/We Dance, We Love, We Groove (Electro Mix).wav",
- 	"cover": "https://funkthetown.net/images/Marw/MARW_Enjoy_FINAL.jpg",
- 	"dwn": "https://funkthetown.net/Audio/Marw/We Dance, We Love, We Groove (Electro Mix).wav"
- },
+//  {
+// 	"type": "audio",
+//  	"artist": "Marw",
+// 	"title": "We Dance, We Love, We Groove (Electro Mix)",
+//  	"audio": "https://funkthetown.net/Audio/Marw/Mp3/EP-1//Marw - We Dance, We Love, We Groove (Electro Mix).mp3",
+//  	"cover": "https://funkthetown.net/images/Marw/Marw - Enjoy (Cover).jpg",
+//  	"dwn": "https://funkthetown.net/Audio/Marw/Mp3/EP-1/Marw - We Dance, We Love, We Groove (Electro Mix).mp3"
+//  },
 
 // {
 // "type": "audio",

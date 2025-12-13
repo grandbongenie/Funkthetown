@@ -309,18 +309,34 @@ button:hover {
 }
 
 
+button{
+
+  text-decoration: none;
+
+}
+
+
 .connectionButton{
 
 display: block;
 position: relative;
 left: 2rem;
+text-decoration: none;
 
 
 
 }
 
+a{
+
+  text-decoration: none;
+  color: rgb(251, 176, 65);
+
+}
+
 #Connection {
 
+  text-decoration: none;
   background-color: WHITE;
   font-family: 'Arial Rounded MT Bold Regular'; 
   width:20%;
@@ -331,6 +347,8 @@ left: 2rem;
   color:rgb(251, 176, 65);
   border-radius:50px;
   cursor:pointer;
+  text-decoration: none;
+  
   
 
 

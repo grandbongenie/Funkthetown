@@ -4,14 +4,28 @@ body {
 
 background-color:#3584ff;
 display: flex;
+
 flex-direction: column;
 align-items: center;
+justify-content: space-between;
+}
+
+main
+{
+
+  display: flex;
+
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
 }
 
 video {
 
 height: auto;
-width: 100%;
+width:90%;
+border-radius: 100px;
+
 
 
 }
@@ -32,11 +46,12 @@ margin-left: 5rem;
 margin-top: 2.5rem;
 
 
+
 }
 
 p {
 
-font-family: 'Collective';
+font-family: 'Arial MT Extra Bold';
 font-size: 138px;
 color:#3584ff;
 
@@ -52,7 +67,7 @@ color:#3584ff;
     height: 1080px;
     order:3;
     position: relative;
-    top:-220px;
+    
     z-index: 3;
     margin: 3rem;
     padding-left: 2rem;
@@ -66,7 +81,7 @@ color:#3584ff;
     display:flex;
     margin-left: 3rem;
     align-items: center;
-    margin-top: 12rem;
+    margin-top: -5rem;
     
 
   }
@@ -78,7 +93,7 @@ color:#3584ff;
 
 
   input{
-    font-family: 'Collective'; 
+    font-family: 'Arial MT Extra Bold'; 
     background-color: rgba(90, 74, 66);
     
        
@@ -114,7 +129,7 @@ color:#3584ff;
   
    
     background-color: rgba(90, 74, 66);
-    font-family: 'Collective'; 
+    font-family: 'Arial MT Extra Bold'; 
     width: 15rem;
     height:6rem;
     border:none;
@@ -169,15 +184,20 @@ color: black;
 
   #logo{
 
-    text-align: center;
-    background-color: #3584ff;
-    width: 100%;
+    
+    background-color: #fbb041;
+    width: 50%;
     order:2;
-    height:300px;
+    height:10px;
     cursor:pointer;
+    
+   
+    border-radius: 50px;
     
 
   }
+
+
 
   img:hover{
 
@@ -191,12 +211,12 @@ color: black;
   #logo img{
 
     
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     position: relative;
-    top:-220px;
+    top: -275px;
     z-index: 5;
-    left: 300px;
+    left: 475px;
   }
 
 
@@ -206,6 +226,8 @@ color: black;
 order: 6;
 align-self: center;
 width:100%;
+position: relative;
+
 }
 
 
@@ -310,9 +332,10 @@ background-color: #fbb041;
     
     p {
     
-    font-family: 'Collective';
+    font-family: 'Arial MT Extra Bold';
     font-size: 138px;
     color:#3584ff;
+    font-weight: bold;
     
     }
     
@@ -353,7 +376,7 @@ background-color: #fbb041;
     
     
       input{
-        font-family: 'Collective'; 
+        font-family: 'Arial MT Extra Bold'; 
         background-color: rgba(90, 74, 66);
         
            
@@ -389,7 +412,7 @@ background-color: #fbb041;
       
        
         background-color: rgba(90, 74, 66);
-        font-family: 'Collective'; 
+        font-family: 'Arial MT Extra Bold'; 
         width: 15rem;
         height:8rem;
         border:none;
@@ -446,7 +469,7 @@ background-color: #fbb041;
     
         text-align: center;
         background-color: #3584ff;
-        width: 100%;
+        width: 50%;
         order:2;
         height:300px;
         
@@ -456,12 +479,11 @@ background-color: #fbb041;
       #logo img{
     
         
-        width: 700px;
-        height: 700px;
+        width: 250px;
+        height: 250px;
         position: relative;
-        top:-350px;
-        z-index: 5;
-        left: 300px;
+        
+       
       }
     
       .follow {
@@ -491,14 +513,14 @@ background-color: #fbb041;
         
         
         }
-    /* .network {
+     .network {
     
     
         background-color: #8A50C8;
         height: 540px;
     
     
-    } */
+    } 
 
 
 }
@@ -512,7 +534,7 @@ background-color: #fbb041;
   body {
 
     overflow-x: hidden;
-    
+    align-items:flex-start;
 
 
 
@@ -529,17 +551,18 @@ background-color: #fbb041;
 
   video {
 
-    width: 100%    !important;
+    width: 65%    !important;
     height: auto   !important;
-    object-fit:cover;
-    order:2;
+    position: relative;
+    left:100px;
+    order:1;
     
   }    
 
 
   .sloganDiv{
 
-   width: 1440px;
+   width: 800px;
   order:1;
   text-align: left;
 
@@ -549,19 +572,22 @@ background-color: #fbb041;
 
   .explain{
 
-
-
-
+ font-size: 4rem;
+padding: 4rem;
+padding-top: 7rem;
   }
 
   .NewsLetterField {
 
     background-color:rgb(251, 176, 65);
     height: 1000px;
-    width: 1200px;
+    width: 1000px;
     border-radius: 16px;
     position: relative;
     top:-150px;
+    left: 100px;
+    
+   
 
 
 }
@@ -626,20 +652,29 @@ width:600px;
   #logo img{
 
     position: relative;
-   top:-180px;
-    width: 550px;
-    height: 550px;
+   top:-175px;
+    width: 250px;
+    height: 250px;
     opacity: 0.98;
-    left:0px
+    left: 250px;
   }
 
   .follow {
 
     order: 6;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    align-items: center;
+    margin-left: 9rem;
+    margin-right: 0rem;
+    width: 50%;
     }
     
+    .social {
+    display: flex;
+    justify-content: space-between;
+   
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
 
   i {
 
@@ -832,6 +867,7 @@ width:600px;
     height: auto   !important;
     object-fit:cover;
     order:2;
+    top:5rem
     
   }    
 
@@ -994,18 +1030,25 @@ margin-bottom: 0px;
   
   .slogan {
 
-font-size: 35px;
-margin-left: 1rem;
+font-size: 45px;
+text-align: center;
 margin-top: 1rem;
+top: 10px;
+position: relative;
+left: 15px;
 
   }
 
   video {
 
-    width: 100%    !important;
+    width: 90%    !important;
     height: auto   !important;
-    object-fit:cover;
-    order:2;
+    top: 775px;
+    order:1;
+    position: relative;  
+
+
+
     
   }    
 
@@ -1013,18 +1056,11 @@ margin-top: 1rem;
   .sloganDiv{
 
   margin-top: 0rem;  
-  order:1;
+  order:2;
   width:350px;
-  
+  top: 100px;
   margin-bottom: -2rem;
-
-  }
-
-  .explain{
-
-
-
-
+  position: relative;  
   }
 
   .NewsLetterField {
@@ -1034,20 +1070,33 @@ margin-top: 1rem;
     width: 300px;
     border-radius: 16px;
     position: relative;
-    top:-150px;
+    top: 450px;
+    position: relative;
+    
     
 
 }
 
+
+  .explain{
+
+
+   padding-top: 0rem; 
+   top: -500px; 
+
+
+  }
+
+
 .newslettersdesktop {
 
   display: block;
- 
-  
+position:relative;
+  font-size: 15px;
   border-radius: 16px;
-  margin-top: 0rem;
-  margin-left: 0rem;
-
+  margin-top: 1rem;
+  margin-left: 2rem;
+top: 150px;
 }
 
 input{
@@ -1065,7 +1114,7 @@ input{
 font-size: 35px;
 width:350px;
 height: 70px;
-margin-top: 0rem;
+margin-top: -1rem;
 
 
 }
@@ -1087,35 +1136,40 @@ margin-top: 0rem;
     margin-top: 1rem;
     height:5rem;
     font-size: 35px;
-
+    position: relative;
+    top: 100px
   }
 
   #logo{
 
     text-align: center;
     background-color: #3584ff;
-    width: 100%;
+    width: 90%;
     border-radius: 16px;
+    
+    
   }
 
   #logo img{
 
     position: relative;
-   top:25px;
+   top:-225px;
     width: 300px;
     height: 300px;
     opacity: 0.98;
-    left:0px;
+    left:-50px;
     margin-left:50px;
+   
   }
 
   .follow {
 
     order: 6;
+    position: relative;
     margin-top: 0rem;
     margin-left: 1rem;
     margin-right: 1rem;
-    
+    top: 600px;
 
     }
     
@@ -1125,7 +1179,7 @@ margin-top: 0rem;
       justify-content: space-between;
       margin-left: 0rem;
       margin-right: 0rem;
-    
+      
     
     
     }

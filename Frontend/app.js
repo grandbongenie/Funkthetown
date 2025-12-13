@@ -1,7 +1,7 @@
 const express = require('express');
-const fs =require('fs');
-const https = require('https');
-const http = require('http');
+// const fs =require('fs');
+// const https = require('https');
+// const http = require('http');
 const app = express();
 module.exports = app;  
 const bodyParser = require('body-parser');
@@ -13,6 +13,8 @@ const path = require('path');
 
 
 //Middleware
+app.use('/.well-known/acme-challenge', express.static('/var/www/funkthetown/.well-known/acme-challenge'));
+
 app.use(express.static(__dirname +'/'));
 
 // parse application/x-www-form-urlencoded
@@ -26,31 +28,36 @@ app.use(express.static(__dirname +'/'));
 
 // demo
 
-      //  const host = '0.0.0.0';
-      //  const port = process.env.PORT || 3000;
+      //   const host = '0.0.0.0';
+      //   const port = process.env.PORT || 3000;
 
-      // app.listen(port, host, function(){
+      //  app.listen(port, host, function(){
 
-      //     console.log("Server started");
-      //     });
-      
+      //      console.log("Server started");
+      //      });
+
 
 
     //Live
 
 
-    const httpServer = http.createServer((req,res)=>{
-     res.writeHead(301,{Location:`https://${req.headers.host}${req.url}`});
-       res.end();
-   }).listen(80);
+    //  const httpServer = http.createServer((req,res)=>{
+    //   res.writeHead(301,{Location:`https://${req.headers.host}${req.url}`});
+    //     res.end();
+    // }).listen(3000);
 
-      const httpsServer = https.createServer({
-       key: fs.readFileSync('/etc/letsencrypt/live/www.funkthetown.net/privkey.pem'),
-      cert: fs.readFileSync('/etc/letsencrypt/live/www.funkthetown.net/fullchain.pem'),
-    }, app).listen(443);
+    //    const httpsServer = https.createServer({
+    //     key: fs.readFileSync('/etc/ssl/private/_.funkthetown.net_private_key (1).key'),
+    //     cert: fs.readFileSync('/etc/ssl/certs/funkthetown.net_ssl_certificate.cer'),
+       
+       
+    //  }, app).listen(3000);
 
 
-
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+      console.log(`Serveur Node.js démarré sur le port ${port}`);
+    });
 
 
 const userRoutes = require('./routes/user');

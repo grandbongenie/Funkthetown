@@ -239,16 +239,59 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .textPromo {
 
-margin-top: 15rem;
+
+margin-top: 10rem;
 font-family:'Collective';
 color: white;
 font-size: 9rem;
 
 }
 
+.title {
+
+position:relative;
+
+
+}
+
+#linkVersionfr {
+
+	
+    
+
+font-size: 9rem;
+color: white;
+
+}
+
+#linkVersionen {
+
+	
+  
+    
+	display: none;
+	font-size: 9rem;
+	color: white;
+}
+
+
+#linkVersionfr:hover {
+
+text-decoration: underline;
+cursor: pointer;
+
+
+}
+
+#linkVersionen:hover {
+
+	text-decoration: underline;
+	
+	
+	}
 
 #bg {
-  margin-top: 12rem;	
+  margin-top: 6rem;	
   margin-left:0px;
   width:45%;
   height:45%;
@@ -320,12 +363,33 @@ align-items: center;
 #bio h1 {
 
 	font-family: 'Univers LT 93 Extra Black Extended';   
-	font-size: 2.2rem;
+	font-size: 3.2rem;
 	margin-top: 0rem;
 	
 	line-height: 4rem;
 	
 	
+
+
+}
+
+#Histoire_Container h1 {
+
+	font-size: 3.2rem;
+	margin-top: 7rem;
+	
+	line-height: 4rem;
+	color: White;
+	font-family: "Univers LT 93 Extra Black Extended Oblique" ;
+
+
+}
+
+#Histoire {
+
+
+font-family: "Univers LT 93 Extra Black Extended Oblique" ;
+color: white;
 
 
 }
@@ -347,6 +411,7 @@ p{
 }
 
 
+
 #logo{
 
 margin-top: 10rem;
@@ -360,6 +425,7 @@ cursor:pointer;
 #logo img {
 
 width: 550px;
+border:black;
 
 	
 
@@ -380,7 +446,7 @@ width: 550px;
 
 
 position: relative;
-margin-top: 5rem;
+margin-top: 0rem;
 
 margin-bottom: 5rem;
 
@@ -463,9 +529,9 @@ margin-bottom: 5rem;
 
 	#logo img{
 
-		margin-top: -7rem;		
+		margin-top: -3rem;		
 		width: 300px;
-		height:300px;
+		
 		}
 		
 		
@@ -476,6 +542,32 @@ margin-bottom: 5rem;
 		font-size:7.5rem;
 
 	}
+
+	.title {
+
+		position:relative;
+		left: 4.5rem;
+		
+		}
+		
+		#linkVersionfr {
+
+			
+			position: relative;
+			left: 0rem;
+			font-size: 4rem;
+			
+			
+			}
+			
+			#linkVersionen {
+			
+				position: relative;
+				left: 0rem;
+				font-size: 4rem;
+				
+			}
+			
 
 	.flexBox {
 
