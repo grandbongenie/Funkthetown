@@ -49,9 +49,9 @@ server.on('listening', () => {
 });
 
  server.listen(port);
-
-//  const httpsServer = https.createServer({
-//   key: fs.readFileSync('/etc/letsencrypt/live/www.funkthetown.net/privkey.pem'),
-//    cert: fs.readFileSync('/etc/letsencrypt/live/www.funkthetown.net/fullchain.pem'),
+   const httpsServer = https.createServer({
+   key: fs.readFileSync('/etc/letsencrypt/live/www.funkthetown.net/privkey.pem'),
+   cert: fs.readFileSync('/etc/letsencrypt/live/www.funkthetown.net/fullchain.pem'),
   
-//   }, app).listen(443);
+   }, app).listen(443);
+   pm

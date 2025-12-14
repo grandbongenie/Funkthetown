@@ -1,4 +1,8 @@
+body{
+overflow-y: hidden;
 
+
+}
 
 #col1{
 
@@ -198,13 +202,13 @@ i{
  
   
   
-  font-size:5rem;
+  font-size:4rem;
   /* top:79%;
   left: 5%; */
   cursor: pointer;
   z-index:10;
   opacity:0.85;
-  color: rgb(251, 176, 65);
+  color: black;
   
   
 } 
@@ -284,7 +288,20 @@ button:hover {
 
 }
 
+    #son{
+      position: relative;
+font-family:'Arial Rounded MT Bold Regular';
+color:  black;
 
+    }
+
+       #Message{
+      position: relative;
+font-family:'Arial Rounded MT Bold Regular';
+color: black;
+
+    }
+ 
 
 
 #PLH {
@@ -297,13 +314,13 @@ button:hover {
 .iconemutedesktop {
 
  margin-left: 5rem;
-
+color: white;
 
 }
 
-.iconemutemobil .fas {
+.iconemutemobil {
 
-  color:rgba(90, 74, 66);
+  color:white;
   display:none;
 
 }
@@ -480,6 +497,15 @@ a{
   
 }
 
+#Connection
+{
+
+position: relative;
+top: 150PX;
+width: 40%;
+
+}
+
   .ml11 {
 
     display:inline-block;
@@ -496,8 +522,9 @@ a{
 
   .letters2{
 
+    position: absolute;
     display:inline-block;
-    text-align: center;
+    left:-170px;
     width: 100%;
    
 
@@ -599,9 +626,27 @@ a{
  }
 
 
+#son{
+  display:inline-block;
+  width:100%;
+  margin:0;
+  text-align: center;
+  align-items: center;
+  
+  font-family: 'Arial Rounded MT Bold Regular'; 
+  font-size:2rem;
+}
 
-
-
+#Message{
+  display:inline-block;
+  width:100%;
+  margin:0;
+  text-align: center;
+  align-items: center;
+  
+  font-family: 'Arial Rounded MT Bold Regular'; 
+  font-size:2rem;
+}
 
 
 .logo{
@@ -611,7 +656,249 @@ a{
 
 
   
-  top:1rem;
+  
+ 
+  
+
+}
+
+ .logo-img
+{
+	
+  padding:-13rem;  
+  
+
+	
+	opacity:1;
+	-webkit-transition: all 500ms ease-in-out;
+	-moz-transition: all 500ms ease-in-out;
+	-ms-transition: all 500ms ease-in-out;
+	-o-transition: all 500ms ease-in-out;
+	transition: all 500ms ease-in-out;
+  object-fit: scale-down;
+  z-index: 3;
+	
+}
+ 
+.logo-img:empty
+{
+	top: 16%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+
+#emailSend{
+  width:40%;
+  height:4rem;
+  font-size:2rem;
+}
+
+}
+
+
+@media screen and (max-width:500px){
+
+  .ml10{
+
+    font-size: rem;
+    top:18rem;
+  }
+
+
+  #col7{
+
+   
+    height: 7rem;
+    z-index: 3;
+    text-align: center;
+    align-items: center;
+    
+  
+  }
+
+#PLH {
+
+  display:inline-block;
+  width:100%;
+  margin:0;
+  text-align: center;
+  align-items: center;
+  
+  
+}
+
+#Connection
+{
+
+position: relative;
+top:-200px;
+width: 60%;
+
+}
+
+  .ml11 {
+
+    
+    width:100%;
+    margin:0;
+    text-align: center;
+    font-size: 1.7rem;
+    left:10rem;
+    bottom: 9rem;
+    
+
+  }
+
+
+  .letters2{
+
+    display:none;
+    position: absolute;
+    display:inline-block;
+    left:-50px;
+    width: 15%;
+   
+
+  }
+
+
+
+  .newslettersdesktop{
+
+    position: relative;
+    flex-direction: column;
+    top:-55px;
+
+  }
+
+  .newslettersdesktop input{
+
+    margin-top:3rem;
+
+  }
+
+
+
+
+
+  input{
+
+    font-size: 1.4rem;
+
+
+  }
+
+  input::placeholder{
+
+    font-family: 'Arial Rounded MT Bold Regular'; 
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    
+    
+    
+    }
+
+
+    #son{
+      position: relative;
+top: 65px;
+
+
+    }
+
+       #Message{
+      position: relative;
+top: 65px;
+
+
+    }
+ 
+  .newslettersdesktop button {
+
+  
+  display: inline-block;  
+  background-color: WHITE;
+  font-family: 'Arial Rounded MT Bold Regular'; 
+  width:80%;
+  height:3rem;
+  border:none;
+  font-size:2.5rem;
+  font-weight:bold;
+  color:rgb(251, 176, 65);
+  border-radius:50px;
+  cursor:pointer;
+  margin-top: 0.5rem;
+  
+
+
+}
+
+.iconemutedesktop{
+
+  
+  align-items: center;
+  
+  text-align: center;
+  display:none;
+  
+ 
+ }
+ 
+
+ .iconemutemobil {
+
+  position: relative;
+  display:inline-block;
+  text-align:center;
+  
+  top: 80px;
+ 
+  
+
+}
+
+
+.iconemutemobils {
+
+  display:inline-block;
+  /* position: absolute; */
+  color: grey;
+  /* left: 46%;
+  top:134%; */
+  font-size: 2rem;
+  margin-top: 1rem;;
+  
+ 
+ }
+
+
+
+
+i{
+
+   height: 70%;
+  width: 70%;
+}
+
+
+.logo{
+
+
+position: absolute;
+  width: 80%;
+  height: 80%;
+
+top: 10%;
+  
+
  
   
 
@@ -647,5 +934,11 @@ a{
   z-index: 3;
 }
 
+
+#emailSend{
+  width:60%;
+  height:4rem;
+  font-size:2rem;
+}
 
 }}
