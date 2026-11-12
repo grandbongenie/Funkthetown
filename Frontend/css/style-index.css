@@ -163,10 +163,10 @@
 	border: 1px solid rgba(255, 255, 255, 0.72);
 	background: rgba(0, 0, 0, 0.28);
 	color: #ffffff;
-	padding: 0.95rem 1.7rem;
+	padding: 1.16rem 2.07rem;
 	border-radius: 999px;
 	font-family: 'Arial Rounded MT Bold Regular';
-	font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+	font-size: clamp(1.34rem, 1.83vw, 1.83rem);
 	letter-spacing: 0.08em;
 	text-transform: lowercase;
 	white-space: nowrap;
