@@ -269,8 +269,8 @@
 
 @media (min-width: 901px) {
 	.home-background-image--top {
-		top: 92px;
-		height: calc(100% - 92px);
+		top: 76px;
+		height: calc(100% - 76px);
 		object-fit: contain;
 		object-position: top center;
 	}
@@ -1042,7 +1042,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 		/* #menu is the original menu */
 		#menu,
 		#menu-global,
+		#menu2 {
+			display:none;
+		}
+		
+		.slicknav_menu {
+			display:block;
+			position: relative;
+			z-index: 10;
+		}
 	}
+
+	@media (max-width: 450px) {
+		.intro-overlay__video {
 			width: min(100%, calc(100vw - 1rem));
 			max-height: calc(100dvh - 1rem);
 			border-radius: 1.35rem;
@@ -1055,8 +1067,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 		}
 
 		.home-background-image--top {
-			top: 68px;
-			height: calc(100% - 68px);
+			top: 0;
+			height: 100dvh;
+			width: 100vw;
+			max-width: none;
+			max-height: none;
+			object-fit: cover;
+			object-position: center center;
 		}
 
 		.container2 {
@@ -1066,4 +1083,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 		}
 
 
-		.home-audio-toggle {
+	}
+
+	@keyframes newsletterMobileIn {
+		0% {
+			opacity: 0;
+			transform: translateX(-50%) translateY(1.75rem);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateX(-50%) translateY(0);
+		}
+	}
