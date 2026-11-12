@@ -38,6 +38,78 @@ function buildEmbedUrl(id) {
   return `${HEARTHIS_BASE_URL}/embed/${id}/transparent_black/?hcolor=55acee&color=&style=2&block_size=2&block_space=2&background=1&waveform=0&cover=0&autoplay=0&css=`;
 }
 
+function normalizeApiTrack(track, username) {
+  const id = String(track.id || '');
+  const title = track.title || track.caption || track.permalink || '';
+  const streamUrl = track.stream_url || track.preview_url || '';
+
+  if (!id || !title) {
+    return null;
+  }
+
+  return {
+    id,
+    title,
+    author: track.user && track.user.username ? track.user.username : username,
+    coverUrl: track.artwork_url || track.thumb_hires || track.thumb || '',
+    streamUrl,
+    detailUrl: track.permalink_url || `${HEARTHIS_BASE_URL}/${encodeURIComponent(username)}/${track.permalink || ''}/`,
+    embedUrl: buildEmbedUrl(id),
+    durationSeconds: Number(track.duration || 0),
+    plays: Number((track.counts && track.counts.plays) || track.playback_count || 0),
+    category: track.genre || track.type || ''
+  };
+}
+
+async function fetchApiTrackPage(username, page, count) {
+  const url = `${HEARTHIS_API_BASE_URL}/${encodeURIComponent(username)}/?type=tracks&page=${page}&count=${count}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`HearThis API tracks request failed with status ${response.status}.`);
+  }
+
+  const payload = await response.json();
+
+  if (!Array.isArray(payload)) {
+    throw new Error('HearThis API tracks response was not a list.');
+  }
+
+  return payload;
+}
+
+async function fetchApiMixes(username) {
+  const pageSize = 100;
+  const mixes = [];
+  const seenIds = new Set();
+
+  for (let page = 1; page <= 20; page += 1) {
+    const tracks = await fetchApiTrackPage(username, page, pageSize);
+
+    if (!tracks.length) {
+      break;
+    }
+
+    tracks
+      .map(track => normalizeApiTrack(track, username))
+      .filter(Boolean)
+      .forEach(mix => {
+        if (seenIds.has(mix.id)) {
+          return;
+        }
+
+        seenIds.add(mix.id);
+        mixes.push(mix);
+      });
+
+    if (tracks.length < pageSize) {
+      break;
+    }
+  }
+
+  return mixes;
+}
+
 function extractInternalId(profileHtml) {
   const match = profileHtml.match(/intInternalId\s*=\s*(\d+)\s*;/);
 
@@ -158,6 +230,17 @@ function parseFeaturedMix(profileHtml) {
 }
 
 async function fetchHearthisMixes(username) {
+  const apiMixes = await fetchApiMixes(username).catch(() => []);
+
+  if (apiMixes.length) {
+    return {
+      username,
+      internalId: '',
+      count: apiMixes.length,
+      mixes: apiMixes
+    };
+  }
+
   const profileHtml = await fetchProfileHtml(username);
   const internalId = extractInternalId(profileHtml);
   const featuredSoundId = extractFeaturedSoundId(profileHtml);
