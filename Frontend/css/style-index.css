@@ -144,7 +144,7 @@
 	left: auto;
 	bottom: 6rem;
 	z-index: 2;
-	width: clamp(75px, 8.5vw, 140px);
+	width: clamp(75px, 7.5vw, 128px);
 	height: auto;
 	opacity: 0.94;
 	pointer-events: none;
@@ -154,7 +154,7 @@
 .intro-overlay__skip {
 	--skip-side: 10.5rem;
 	--skip-bottom: 6rem;
-	--skip-logo: clamp(75px, 8.5vw, 140px);
+	--skip-logo: clamp(75px, 7.5vw, 128px);
 	position: absolute;
 	left: var(--skip-side);
 	right: auto;
@@ -163,17 +163,17 @@
 	border: 1px solid rgba(255, 255, 255, 0.72);
 	background: rgba(0, 0, 0, 0.28);
 	color: #ffffff;
-	padding: 1.16rem 2.07rem;
+	padding: 0.95rem 1.8rem;
 	border-radius: 999px;
 	font-family: 'Arial Rounded MT Bold Regular';
-	font-size: clamp(1.34rem, 1.83vw, 1.83rem);
+	font-size: clamp(1rem, 1.3vw, 1.35rem);
 	letter-spacing: 0.08em;
 	text-transform: lowercase;
 	white-space: nowrap;
 	cursor: pointer;
 	backdrop-filter: blur(8px);
 	transform: translateY(60%);
-	animation: introSkipSweep 1.4s cubic-bezier(0.2, 0.9, 0.2, 1) 0.8s both;
+	animation: introSkipSweep 1.87s cubic-bezier(0.2, 0.9, 0.2, 1) 0.8s both;
 }
 
 .intro-overlay__skip:hover {
@@ -205,7 +205,7 @@
 
 .intro-overlay__title {
 	color: #ffffff;
-	font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+	font-size: clamp(1.35rem, 1.9vw, 2.05rem);
 	letter-spacing: 0.12em;
 	text-transform: lowercase;
 	text-shadow: 0 0 18px rgba(0, 0, 0, 0.45);
@@ -215,10 +215,10 @@
 	border: 1px solid rgba(255, 255, 255, 0.72);
 	background: rgba(0, 0, 0, 0.28);
 	color: #ffffff;
-	padding: 0.9rem 1.4rem;
+	padding: 0.95rem 1.8rem;
 	border-radius: 999px;
 	font-family:'Arial Rounded MT Bold Regular';
-	font-size: 0.95rem;
+	font-size: clamp(1rem, 1.3vw, 1.35rem);
 	letter-spacing: 0.08em;
 	text-transform: lowercase;
 	cursor: pointer;
