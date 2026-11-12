@@ -269,8 +269,8 @@
 
 @media (min-width: 901px) {
 	.home-background-image--top {
-		top: 82px;
-		height: calc(100% - 82px);
+		top: 90px;
+		height: calc(100% - 90px);
 		object-fit: contain;
 		object-position: top center;
 	}
