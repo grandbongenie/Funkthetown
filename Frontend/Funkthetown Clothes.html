@@ -22,6 +22,7 @@
     <meta name="keywords" content="Musique, FunkTheTown, Funk The Town, Funk, label, association" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/slicknav.css" />
+    <link rel="stylesheet" href="css/navigation.css" />
     <link rel="stylesheet" href="css/style-clothes.css" />
     <link rel="stylesheet" href="css/banner-rotator.css" />
     <link rel="stylesheet" href="css/banner-rotator.min.css" />
@@ -63,7 +64,6 @@
     <!-- <script src="js/jquery.min.js"></script>
     <script src="js/jquery.banner-rotator.min.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
-    <script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
     <script src="js/jquery.slicknav.min.js"></script>
 
     <!-- <script>
@@ -126,7 +126,10 @@
 
 </head>
 
-<body>
+<body data-nav-active="clothes">
+    <audio id="clothesAmbientAudio" preload="auto">
+        <source src="Audio/Marw/Marw-love_is_It.wav" type="audio/wav" />
+    </audio>
 
     <!-- <video autoplay muted loop>
 
@@ -138,28 +141,7 @@
   
 
 
-    <div class="container">
-        <div class="menu-top">
-            <ul id="menu">
-                <li><a class="scroll" href="https://events.funkthetown.net/" target="_blank">events</a></li>
-                <li><a class="scroll" href="Funkthetown Music.html">music</a></li>
-                <li><a class="scroll" href="https://funkthetownclothes.myspreadshop.fr" target="_blank">clothes</a></li>
-                <li><a class="scroll" href="https://discord.gg/qdRW8cN" target="_blank" =>network</a></li>
-            </ul>
-        </div>
-        
-        <div class="clearer"></div>
-        <div class="menu-bottom">
-            <ul id="menu2">
-                <li><a class="scroll" href="https://radio.funkthetown.net/" target="_blank">radio</a></li>
-                <li><a class="scroll" href="Funkthetown Studio.html">studio</a></li>
-                <li><a class="scroll" href="Funkthetown Dream.html">dream</a></li>
-                <li><a class="scroll" href="#school">school</a></li>
-                <li><a class="scroll" href="#action">action</a></li>
-            </ul>
-        </div>
-     </div>
-     <main style="margin:10% 10% 10% 10%">
+     <main style="margin:7.5rem 10% 10% 10%">
 
      <!-- <div id="myRotator" class="banner-rotator" >
         <ul class="slides">
@@ -176,21 +158,22 @@
         </ul>
     </div> -->
 
-    <div class="your-class" style="cursor:pointer;">
-        <div><img src="images/CLOTHES/P_20191213_131212_vHDR_On.jpg"/></div>
-        <div><img src="images/CLOTHES/P_20191213_131508_vHDR_On.jpg"/></div>
-        <div><img src="images/CLOTHES/P_20191213_131727_vHDR_On.jpg"/></div>
-        <div><img src="/images/CLOTHES/P_20191213_210954_vHDR_On.jpg"/></div>
-        <div><img src="images/CLOTHES/P_20191214_113155_vHDR_On.jpg"/></div>
-        <div><img src="images/CLOTHES/P_20191214_113318_vHDR_On.jpg"/></div>
-        <div><img src="images/CLOTHES/P_20191214_113419_vHDR_On.jpg"/></div>
-        <div><img src="images/CLOTHES/P_20191214_113633_vHDR_On.jpg"/></div>
-        <div><img src="images/CLOTHES/P_20191214_124339_vHDR_On.jpg"/></div>
+<div id="myShop">
+    <a href="https://funkthetownclothes.myspreadshop.net">funkthetownclothes</a>
+</div>
 
+<script>
+    var spread_shop_config = {
+        shopName: 'funkthetownclothes',
+        locale: 'fr_EU',
+        prefix: 'https://funkthetownclothes.myspreadshop.net',
+        baseId: 'myShop'
+    };
+</script>
 
-
-      </div>
-
+<script type="text/javascript"
+        src="https://funkthetownclothes.myspreadshop.net/shopfiles/shopclient/shopclient.nocache.js">
+</script>
 
 
 </main>
@@ -267,34 +250,52 @@ $(".your-class").on("click", function(e){
     var slideClicked = $(this).find(".slick-active").attr("data-slick-index"); 
     console.log(slideClicked); 
 });
+
+(function () {
+    var clothesAmbientAudio = document.getElementById("clothesAmbientAudio");
+    var hasStarted = false;
+
+    if (!clothesAmbientAudio) {
+        return;
+    }
+
+    function cleanupFallbackListeners() {
+        document.removeEventListener("click", handleFirstInteraction, true);
+        document.removeEventListener("touchstart", handleFirstInteraction, true);
+        document.removeEventListener("pointerdown", handleFirstInteraction, true);
+        document.removeEventListener("keydown", handleFirstInteraction, true);
+    }
+
+    function startAudio() {
+        if (hasStarted) {
+            return;
+        }
+
+        hasStarted = true;
+        clothesAmbientAudio.currentTime = 0;
+        clothesAmbientAudio.play().then(function () {
+            cleanupFallbackListeners();
+        }).catch(function () {
+            hasStarted = false;
+        });
+    }
+
+    function handleFirstInteraction() {
+        startAudio();
+    }
+
+    document.addEventListener("click", handleFirstInteraction, true);
+    document.addEventListener("touchstart", handleFirstInteraction, true);
+    document.addEventListener("pointerdown", handleFirstInteraction, true);
+    document.addEventListener("keydown", handleFirstInteraction, true);
+    window.addEventListener("load", startAudio, { once: true });
+})();
 </script>
 
 </body>
 
 
-<script>
-    var combinedMenu = $('#menu').clone();
-    var secondMenu = $('#menu2').clone();
-
-    secondMenu.children('li').appendTo(combinedMenu);
-
-    combinedMenu.slicknav({
-        duplicate: false
-    });
-
-
-// const tshirt= document.querySelector('.tshirt');
-
-// tshirt.onclick= function() {
-
-//     tshirt.style.display="block";
-// }
-
-
-
-
-
-</script>
+<script src="js/navigation.js" defer></script>
 
 
 </html>

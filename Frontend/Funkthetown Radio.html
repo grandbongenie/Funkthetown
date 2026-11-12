@@ -28,22 +28,20 @@
     <script src="js/jquery.slicknav.min.js"></script>
     <link rel="stylesheet" href="css/slicknav.css" />
     <link rel="stylesheet" href="css/style-radio.css">
+    <link rel="stylesheet" href="css/navigation.css">
 
 
 
     <style type="text/css">
         @media screen and (max-width: 600px) {
-
-
             body {
-                background-size: 900%;
+                background-size: cover;
             }
         }
 
         @media screen and (max-width: 800px) and (min-width: 600px) {
-
             body {
-                background-size: 400%;
+                background-size: cover;
             }
         }
     </style>
@@ -52,70 +50,30 @@
  
 </head>
 
-<body>
+<body data-nav-active="radio">
     <!-- <iframe src="https://www.radioking.com/widgets/player/player.php?id=140707&c=%235a4a42&c2=%23FFFFFF&ii=&p=0&pp=1&i=1&eq=1&po=1&t=1&f=h&v=2&s=1&li=1&h=145&l=470&a=1&plc=0" name="idFrame" id="idFrame" style="border-radius: 5px; width:470px;height:145px; min-width: 470px;" frameBorder="0"></iframe> -->
 
-    
-    <div class="container">
-        <div class="menu-top">
-            <ul id="menu">
-                <li><a class="scroll" href="https://events.funkthetown.net/" target="_blank">events</a></li>
-                <li><a class="scroll" href="Funkthetown Music.html">music</a></li>
-                <li><a class="scroll" href="https://funkthetownclothes.myspreadshop.fr/" target="_blank">clothes</a></li>
-                <li><a class="scroll" href="https://discord.gg/qdRW8cN" target="_blank" =>network</a></li>
-            </ul>
-        </div>
-        
-        <div class="clearer"></div>
-        <div class="menu-bottom">
-            <ul id="menu2">
-                <li><a class="scroll" href="https://radio.funkthetown.net/" target="_blank">radio</a></li>
-                <li><a class="scroll" href="Funkthetown Studio.html">studio</a></li>
-                <li><a class="scroll" href="Funkthetown Dream.html">dream</a></li>
-                <li><a class="scroll" href="#school">school</a></li>
-                <li><a class="scroll" href="#action">action</a></li>
-            </ul>
-        </div>
-     </div>
+    <audio id="radioAmbientAudio" class="radio-ambient-audio" preload="auto">
+        <source src="Audio/FUNKTHETOWN RADIO - Sortie - OZO 1 & 3.wav" type="audio/wav" />
+    </audio>
 
-    
-    <!--<img id="bg" src="images/KIF_0051.JPG">-->
-
-    
-    <div class="container2">
-
-        <div class="titre">
-            <img id="logo-radio" src="images/FRDS_logo_color-(original).png" alt="logo radio">
+    <div class="radio-background" aria-hidden="true"></div>
+    <main class="radio-stage">
+        <section class="radio-panel">
+            <p class="radio-eyebrow">Funkthetown Radio</p>
+            <div class="radio-heading">
+                <div>
+                    <h1>Emissions</h1>
+                </div>
             </div>
-
-        <div class="grandmix">
-            <a href="https://music.youtube.com/playlist?list=PL4bG2ZNGSaKGLw1vm3bbkvrsjBnOxxDs-" target="_blank"><img
-                    id="logo-grand-mix" src="images/Playlist.png" alt="logo radio"> </a>
-
-        </div>
-
-        <div class="emissions">
-
-            <a href="https://www.youtube.com/channel/UCbptSQ7_GvczwiD6K0YD4JA" target="_blank"><img id="logo-emissions" src="images/EMISSIONS_2.png"
-                    alt="logo emissions"></a>
-
-
-        </div>
-
-    </div>
+            <div id="radioMixStatus" class="radio-status" hidden></div>
+            <div id="radioMixList" class="radio-mix-list" aria-live="polite"></div>
+        </section>
+    </main>
 
 </body>
 
-<script>
-    var combinedMenu = $('#menu').clone();
-    var secondMenu = $('#menu2').clone();
-
-    secondMenu.children('li').appendTo(combinedMenu);
-
-    combinedMenu.slicknav({
-        duplicate: false
-    });
-
-</script>
+<script src="js/navigation.js" defer></script>
+<script src="js/radio-hearthis.js" defer></script>
 
 </html>

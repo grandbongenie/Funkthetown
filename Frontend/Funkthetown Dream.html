@@ -18,7 +18,7 @@
 
 
 <meta name="description" content="Funkthetown est une association, un organisme, un collectif ayant pour but de transmettre la culture musique afin de promouvoir la paix, l'amour et l'harmonie.
-Funthetown is an association, an organism, a collective which aim to transmit music culture to promote peace, love and harmony.
+Funthetown is an association, an organism, a collective which aim to transmit music culture to promote paix harmonie.
 Funthetown 是一個協會，一個有機體，一個集體，旨在傳播音樂文化，以促進和平，愛和和諧。
 Funthetown は、音楽文化を伝えて平和、愛、調和を促進する団体、生物、集団です。
 Funthetown es una asociación, un organismo, un colectivo cuyo objetivo es transmitir la cultura musical para promover la paz, el amor y la armonía.
@@ -35,81 +35,21 @@ Funthetown jẹ ajọṣepọ kan, ohun-ara-ara, ẹgbẹ kan ti o fẹ lati ṣ
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/style-dream.css" />
 <link rel="stylesheet" href="css/slicknav.css" />
-<style type="text/css">
-
-#my_popup
-{
-	width:1500px;
-	opacity:0.2;
-}
-
-@media screen and (max-width: 600px) {
-	#my_popup
-	{
-		width:300px;
-		opacity:0.2;
-	}
-	body
-	{
-	  background-size: 900%;
-	  
-	}
-}
-
-@media screen and (max-width: 800px) and  (min-width: 600px){
-	#my_popup
-	{
-		width:600px;
-		opacity:0.2;
-	}
-	body
-	{
-	  background-size: 400%;
-	  
-	}
-}
-@media screen and (max-width: 1000px) and  (min-width: 800px){
-	#my_popup
-	{
-		width:800px;
-		opacity:0.2;
-		
-	}
-}
-</style>
+<link rel="stylesheet" href="css/navigation.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="js/jquery.slicknav.min.js"></script>
 </div>
 
 </head>
 
-<body>
+<body data-nav-active="dream">
+	<audio id="dreamAmbientAudio" preload="auto">
+		<source src="Audio/Marw/Marw - OverNight.wav" type="audio/wav" />
+	</audio>
 		
 	<!-- <img id="bg" alt="" src="images/COUVERTURE-PAGE-FACEBOOK-(rework-II).jpg" />-->
 			
 	
-  <div class="container">
-    <div class="menu-top">
-        <ul id="menu">
-            <li><a class="scroll" href="https://events.funkthetown.net/" target="_blank">events</a></li>
-            <li><a class="scroll" href="Funkthetown Music.html">music</a></li>
-            <li><a class="scroll" href="https://funkthetownclothes.myspreadshop.fr/" target="_blank">clothes</a></li>
-            <li><a class="scroll" href="https://discord.gg/qdRW8cN" target="_blank" =>network</a></li>
-        </ul>
-    </div>
-    
-    <div class="clearer"></div>
-    <div class="menu-bottom">
-        <ul id="menu2">
-            <li><a class="scroll" href="https://radio.funkthetown.net/" target="_blank">radio</a></li>
-            <li><a class="scroll" href="Funkthetown Studio.html">studio</a></li>
-            <li><a class="scroll" href="Funkthetown Dream.html">dream</a></li>
-            <li><a class="scroll" href="#school">school</a></li>
-            <li><a class="scroll" href="#action">action</a></li>
-        </ul>
-    </div>
- </div>
-
     <div id="text">
         <h1 class="ml10">
             <span class="text-wrapper">
@@ -127,24 +67,7 @@ Funthetown jẹ ajọṣepọ kan, ohun-ara-ara, ẹgbẹ kan ti o fẹ lati ṣ
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-<script>
-	var combinedMenu = $('#menu').clone();
-	var secondMenu = $('#menu2').clone();
-	
-	secondMenu.children('li').appendTo(combinedMenu);
-	
-	combinedMenu.slicknav({
-		duplicate:false
-	});
-	$(document).ready(function() {
-	
-    });
-
-
-
-
-
-</script>
+<script src="js/navigation.js" defer></script>
             
 
 <script>
@@ -166,6 +89,46 @@ Funthetown jẹ ajọṣepọ kan, ohun-ara-ara, ẹgbẹ kan ti o fẹ lati ṣ
         easing: "easeOutExpo",
         delay: 1000
       });
+
+    (function () {
+      var dreamAmbientAudio = document.getElementById("dreamAmbientAudio");
+      var hasStarted = false;
+
+      if (!dreamAmbientAudio) {
+        return;
+      }
+
+      function cleanupFallbackListeners() {
+        document.removeEventListener("click", handleFirstInteraction, true);
+        document.removeEventListener("touchstart", handleFirstInteraction, true);
+        document.removeEventListener("pointerdown", handleFirstInteraction, true);
+        document.removeEventListener("keydown", handleFirstInteraction, true);
+      }
+
+      function startAudio() {
+        if (hasStarted) {
+          return;
+        }
+
+        hasStarted = true;
+        dreamAmbientAudio.currentTime = 0;
+        dreamAmbientAudio.play().then(function () {
+          cleanupFallbackListeners();
+        }).catch(function () {
+          hasStarted = false;
+        });
+      }
+
+      function handleFirstInteraction() {
+        startAudio();
+      }
+
+      document.addEventListener("click", handleFirstInteraction, true);
+      document.addEventListener("touchstart", handleFirstInteraction, true);
+      document.addEventListener("pointerdown", handleFirstInteraction, true);
+      document.addEventListener("keydown", handleFirstInteraction, true);
+      window.addEventListener("load", startAudio, { once: true });
+    })();
     </script>
 	
 </html>

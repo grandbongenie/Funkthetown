@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
 
 
 
@@ -41,23 +42,23 @@ app.use(express.static(__dirname +'/'));
     //Live
 
 
-    //  const httpServer = http.createServer((req,res)=>{
-    //   res.writeHead(301,{Location:`https://${req.headers.host}${req.url}`});
-    //     res.end();
-    // }).listen(3000);
+    //   const httpServer = http.createServer((req,res)=>{
+    //    res.writeHead(301,{Location:`https://${req.headers.host}${req.url}`});
+    //      res.end();
+    //  }).listen(3000);
 
-    //    const httpsServer = https.createServer({
-    //     key: fs.readFileSync('/etc/ssl/private/_.funkthetown.net_private_key (1).key'),
-    //     cert: fs.readFileSync('/etc/ssl/certs/funkthetown.net_ssl_certificate.cer'),
+    //     const httpsServer = https.createServer({
+    //      key: fs.readFileSync('/etc/ssl/private/_.funkthetown.net_private_key (1).key'),
+    //      cert: fs.readFileSync('/etc/ssl/certs/funkthetown.net_ssl_certificate.cer'),
        
        
-    //  }, app).listen(3000);
+    //   }, app).listen(3000);
 
 
-    const port = process.env.PORT || 3000;
-    app.listen(port, () => {
-      console.log(`Serveur Node.js démarré sur le port ${port}`);
-    });
+    //  const port = process.env.PORT || 3000;
+    //  app.listen(port, () => {
+    //    console.log(`Serveur Node.js démarré sur le port ${port}`);
+    //  });
 
 
 const userRoutes = require('./routes/user');
@@ -66,13 +67,18 @@ const userRoutes = require('./routes/user');
 require('dotenv').config();
 
 // const atlasUser = process.env.ATLAS_USER
-// const atlasPassword = process.env.ATLAS_PASSWORD
+// const atlasPassword = process.env.ATLAS_PASSWORD.
 
-mongoose.connect(`mongodb+srv://hao:shangai2025@funkthetowncluster.bups6.mongodb.net/Funkthetowndb`,
+
+
+mongoose.connect(process.env.MONGODB_URI,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+  .catch(err => {
+  console.error('Connexion à MongoDB échouée !');
+  console.error(err);
+});
 
 
 

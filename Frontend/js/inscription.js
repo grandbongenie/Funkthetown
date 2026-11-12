@@ -1,66 +1,121 @@
-// envoi du formulaire d'inscription
+var newsletterModal = document.getElementById("newsletterModal");
+var newsletterModalBackdrop = document.getElementById("newsletterModalBackdrop");
+var newsletterModalClose = document.getElementById("newsletterModalClose");
+var newsletterForm = document.getElementById("newsletterForm");
+var newsletterEmail = document.getElementById("email");
+var newsletterStatus = document.getElementById("newsletterStatus");
+var introOverlay = document.getElementById("introOverlay");
 
-const formSignup = document.getElementById('emailSend');
+function setNewsletterStatus(message, isError) {
+    if (!newsletterStatus) {
+        return;
+    }
 
+    newsletterStatus.textContent = message;
+    newsletterStatus.hidden = !message;
+    newsletterStatus.classList.toggle("is-error", !!isError);
+}
 
+function openNewsletterModal() {
+    if (!newsletterModal) {
+        return;
+    }
 
+    newsletterModal.hidden = false;
+    document.body.classList.add("newsletter-modal-open");
+    setNewsletterStatus("", false);
 
-formSignup.addEventListener('click', function (event) {
+    window.setTimeout(function () {
+        if (newsletterEmail) {
+            newsletterEmail.focus();
+        }
+    }, 30);
+}
 
-    event.preventDefault();
+function closeNewsletterModal() {
+    if (!newsletterModal) {
+        return;
+    }
 
+    newsletterModal.hidden = true;
+    document.body.classList.remove("newsletter-modal-open");
+}
 
-    let email = document.getElementById('email').value;
-    
+if (newsletterModalBackdrop) {
+    newsletterModalBackdrop.addEventListener("click", closeNewsletterModal);
+}
 
-    let profil = {
+if (newsletterModalClose) {
+    newsletterModalClose.addEventListener("click", closeNewsletterModal);
+}
 
-        email: email
-        
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && newsletterModal && !newsletterModal.hidden) {
+        closeNewsletterModal();
+    }
+});
 
-    };
+document.addEventListener("click", function (event) {
+    if (!newsletterModal || !newsletterModal.hidden) {
+        return;
+    }
 
+    if (introOverlay && !introOverlay.hasAttribute("hidden")) {
+        return;
+    }
 
+    if (event.target.closest(".ft-nav, .newsletter-modal__dialog")) {
+        return;
+    }
 
-    //////Envoi du formulaire au backend
+    openNewsletterModal();
+}, true);
 
-    const inscription = {
+if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-        method: 'POST',
-        headers: {
+        if (!newsletterEmail) {
+            return;
+        }
 
-            'content-type': 'application/json'
+        var email = newsletterEmail.value.trim();
 
-        },
+        if (!email) {
+            setNewsletterStatus("Please enter your email address.", true);
+            newsletterEmail.focus();
+            return;
+        }
 
-        body: JSON.stringify(profil),
-        mode: 'cors',
-        cache: 'default'
+        setNewsletterStatus("Sending your registration...", false);
 
-    };
-
-    console.log(inscription)
-
-    // fetch("http://localhost:3000/api/signup", inscription)
-
-        fetch("https://funkthetown.net/api/signup", inscription)
-        
-        .then(function (response) {
-            if (response.ok) {
-                window.location.href = "index.html"
+        fetch("https://funkthetown.net/api/signup", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email
+            }),
+            mode: "cors",
+            cache: "default"
+        }).then(function (response) {
+            if (!response.ok) {
+                throw new Error("Unable to subscribe right now.");
             }
 
-            return response.json();
+            return response.json().catch(function () {
+                return {};
+            });
+        }).then(function () {
+            newsletterForm.reset();
+            setNewsletterStatus("You are now on the list. See you soon on Funkthetown.", false);
 
-        })
-
-
-        .then(response => {
-            alert(JSON.stringify(response))
-
-        })
-        .catch(error => alert("Erreur:" + error));
-
-
-
-});
+            window.setTimeout(function () {
+                closeNewsletterModal();
+            }, 1200);
+        }).catch(function (error) {
+            setNewsletterStatus(error.message || "Subscription failed. Please try again.", true);
+        });
+    });
+}

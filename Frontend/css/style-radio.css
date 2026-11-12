@@ -175,58 +175,106 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
  
 body  {
-  
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position:center center;
   height:100vh;
-  overflow-y:hidden;
+  min-height:100dvh;
+  overflow-y:auto;
   margin:0;
   padding: 0;
-  background: rgb(251,176,65);
-background: radial-gradient(circle, rgba(251,176,65,1) 10%, rgba(90,74,66,1) 46%);
+  background-color: rgb(90, 74, 66);
 }
 
-#bg {
-  
+.radio-background {
   position: fixed; 
-  left: 0; 
-  top:-20%;
-  /* Preserve aspet ratio */
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index:-1999;
+  inset: 0;
+  background-image: url("../images/FTrUnivers-optimized.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
 }
-
-#logo-radio{
-  
-  
-  align-items:center; 
-  z-index: 1000;
-  
-
-
-}
-
-
 
 .container2 {
+  display: none;
+}
 
-  position: absolute;
-  left:0;
-  right:0;
-  top:0;
-  bottom:0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  
+.radio-ambient-audio {
+  display: none;
+}
 
+.radio-stage {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 7.5rem 1.25rem 2rem;
+}
+
+.radio-panel {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 9.5rem 1.5rem 1.5rem;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.radio-eyebrow {
+  margin: 0 0 0.85rem;
+  color: rgb(251, 176, 65);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+}
+
+.radio-heading {
+  margin-bottom: 1rem;
+}
+
+.radio-heading h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.94;
+}
+
+.radio-intro {
+  margin: 0.65rem 0 0;
+  max-width: 48rem;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1rem;
+}
+
+.radio-status {
+  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.radio-status.is-error {
+  color: #ffd0c7;
+}
+
+.radio-mix-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.radio-embed-frame-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background: transparent;
+}
+
+.radio-embed-frame {
+  display: block;
+  width: 100%;
+  height: 150px;
 }
  
-
+ 
 .titre {
 
    margin-left: 10rem;
@@ -298,6 +346,15 @@ width: 70%;
 
   }
 
+  .radio-background {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: center 8%;
+    background-size: cover;
+  }
+
 
   
   .container2 {
@@ -349,11 +406,51 @@ width: 70%;
 
     width:80%;
 
-
-
   }
 
+  .radio-stage {
+    padding-top: 6rem;
+  }
 
+  .radio-panel {
+    padding: 1rem;
+    border-radius: 22px;
+  }
 
+}
 
+@media (max-width: 932px) and (orientation: landscape) {
+  body {
+    overflow-y: auto;
+  }
+
+  .radio-stage {
+    min-height: 100dvh;
+    padding: 5rem 0.75rem 1rem;
+  }
+
+  .radio-panel {
+    padding: 1.25rem 0.75rem 0.75rem;
+  }
+
+  .radio-eyebrow {
+    margin-bottom: 0.55rem;
+    font-size: 0.7rem;
+  }
+
+  .radio-heading {
+    margin-bottom: 0.7rem;
+  }
+
+  .radio-heading h1 {
+    font-size: clamp(1.6rem, 4.3vw, 2.8rem);
+  }
+
+  .radio-mix-list {
+    gap: 0.7rem;
+  }
+
+  .radio-embed-frame {
+    height: 126px;
+  }
 }

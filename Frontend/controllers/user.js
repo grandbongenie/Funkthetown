@@ -12,7 +12,10 @@
            });
          user.save()
            .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-         .catch(error => res.status(400).json({ error }));
+         .catch(error => {
+  console.error("SIGNUP SAVE ERROR:", error);
+  res.status(400).json({ error: error.message || error });
+});
        
       
    };

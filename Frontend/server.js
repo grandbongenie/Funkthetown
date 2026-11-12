@@ -1,10 +1,10 @@
 const http = require('http');
 const app = require('./app');
-const fs =require('fs');
-const https = require('https')
+const fs = require('fs');
+const https = require('https');
 
 const normalizePort = val => {
-const port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     return val;
@@ -14,17 +14,18 @@ const port = parseInt(val, 10);
   }
   return false;
 };
-const port = normalizePort(process.env.PORT ||'80');
-app.set('port', port);
 
-
+// Port HTTP : 3000
+const httpPort = normalizePort(process.env.HTTP_PORT || '3000');
+// Port HTTPS : 3000
+//const httpsPort = normalizePort(process.env.HTTPS_PORT || '3000');
 
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
   }
   const address = server.address();
-  const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + httpPort;
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges.');
@@ -39,19 +40,20 @@ const errorHandler = error => {
   }
 };
 
+// Serveur HTTP
 const server = http.createServer(app);
-
 server.on('error', errorHandler);
 server.on('listening', () => {
-  const address = server.address();
-  const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
-  console.log('Listening on ' + bind);
+  console.log('Serveur HTTP démarré sur le port ' + httpPort);
 });
+server.listen(httpPort);
 
- server.listen(port);
-   const httpsServer = https.createServer({
-   key: fs.readFileSync('/etc/letsencrypt/live/www.funkthetown.net/privkey.pem'),
-   cert: fs.readFileSync('/etc/letsencrypt/live/www.funkthetown.net/fullchain.pem'),
-  
-   }, app).listen(443);
-   pm
+// Serveur HTTPS
+// const httpsServer = https.createServer({
+//   key: fs.readFileSync('/etc/letsencrypt/live/funkthetown.net/privkey.pem'),
+//   cert: fs.readFileSync('/etc/letsencrypt/live/funkthetown.net/fullchain.pem'),
+// }, app);
+
+// httpsServer.listen(httpsPort, () => {
+//   console.log('Serveur HTTPS démarré sur le port ' + httpsPort);
+// });

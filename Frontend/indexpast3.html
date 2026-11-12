@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  shrink-to-fit=no">
+    <title>Funkthetown.net</title>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2899T3YLFP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2899T3YLFP');
+</script>
+
+
+    <link rel="stylesheet" href="css/style-intro.css" >
+    <link rel="stylesheet" href="css/fonts.css" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://kit.fontawesome.com/26d3fed8b3.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="2.ico" />
+    
+  </head>
+<body>
+
+  
+
+  <div class="logo">
+    <img class="logo-img" src="images/Funkthetown-GIEV2.png" alt="Logo FunkTheTown" title="FunkTheTown Connection" />
+</div> 
+
+
+  <div class="container2">
+ 
+
+    <div id="col1" style="background-color: rgb(255, 53, 198);">
+      
+       <div>
+      
+        <h1 class="ml10">
+            <span class="text-wrapper">
+          
+         <span class="letters"> Bienvenue Chez Funkthetown                              <br><br>
+          
+          </span>
+          
+    </span>
+    </h1>   
+    </div> 
+    
+    </div>
+  
+
+
+    <div id="col2" style="background-color: rgb(252, 241, 63);">
+
+
+   
+
+
+    </div>
+
+    <div id="col3" style="background-color: rgb(251, 176, 65);">
+
+      
+      
+        <button id="Connection"><a href="index.html" target="_blank">Connection</a></button>
+          
+         </div> 
+
+    
+    </div>
+
+    <div id="col4" style="background-color: rgb(53, 132, 255);">
+
+
+
+    </div>
+
+    <div id="col5"  style="background-color: rgb(138, 80, 200);">
+
+
+    </div>
+    <div id="col6" style="background-color: rgb(251, 176, 65)" >
+      
+      
+      <div #="PLHMOBIL">
+      
+        <h1 class="ml11">
+          <span class="text-wrapper">
+           
+         <span class="letters2"> Peace & Harmony</span>
+          
+          </span>
+      </h1>   
+      </div>  -->
+      
+      <form action="/" method="post" class="newslettersdesktop">
+        <input id="email" type="email" name="email" value="" placeholder="Lettre de Nouvelles"></input>
+        <button id="emailSend" type="submit" name="submit">Inscription</button>
+         </form>   
+         </div>
+   
+      
+    </div> 
+
+    <div>
+      
+    <div id="col7" style="background-color: rgb(101, 192, 64)">
+      
+
+
+
+
+
+      <h1 id="son">son</h1>
+      
+
+
+      
+      <div class="iconemutedesktop">
+        <i class="fa-regular fa-circle-play" onclick="play1()" ></i> 
+    	 <audio id="audioson1"  autoplay>
+
+        <source src="./Audio/Marw/Voicing.wav ">
+        
+        
+        </audio>
+      </div> 
+       
+
+       <div class="iconemutemobil"> 
+        <i class="fa-regular fa-circle-play" onclick="play2()"></i> 
+    	 <audio id="audioson2" autoplay>
+
+        <source src="./Audio/Marw/Voicing.wav">
+        
+        
+        </audio>
+      </div>
+
+
+      <h1 id="Message">Message</h1>
+     
+       
+      <div id="PLH">
+      
+        <h1 class="ml11">
+          
+          <span class="letters2"> Paix et Harmonie...</span>
+          
+        </h1>   
+      </div>  
+       
+
+    </div>
+
+    
+      
+  
+
+    <div id="col8" style="background-color: rgb(251, 176, 65)">
+       
+     
+
+     </div> 
+  </div>
+    
+<div class="containerx">
+
+  
+
+
+</div>
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+<script type ="text/javascript" src="app.js"></script>
+
+
+<script>
+
+  var audio1 = document.getElementById('audioson1');
+  
+  
+    function play1(){
+
+      audio1.muted = !audio1.muted;
+
+     }
+
+  function play1(){
+     
+ audio1.play();
+ 
+ audio1.muted=!audio1.muted;
+ 
+ }
+
+
+  
+  
+  
+  </script>   
+
+<script>
+
+  
+  var audio2 = document.getElementById('audioson2');
+    function play2(){
+   
+         
+ audio2.play();
+ 
+ audio2.muted=!audio2.muted;
+    
+  
+    }
+  
+  
+    </script> 
+
+<script src="js/inscription.js"></script>
+  
+<script>
+
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml10 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml10 .letter',
+    rotateY: [-90, 0],
+    duration: 1300,
+    delay: (el, i) => 45 * i
+  }).add({
+    targets: '.ml10',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>
+<script>
+
+  // Wrap every letter in a span
+  var textWrapper = document.querySelector('.ml11 .letters2');
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter2'>$&</span>");
+  
+  anime.timeline({loop: true})
+    .add({
+      targets: '.ml11 .letter2',
+      rotateY: [-90, 0], 
+      duration: 1300,
+      delay: (el, i) => 45 * i
+    }).add({
+      targets: '.ml11',
+      opacity: 0, 
+      duration: 1000,
+      easing: "easeOutExpo",
+      delay: 1000
+    });
+  </script>
+  
+  </html>

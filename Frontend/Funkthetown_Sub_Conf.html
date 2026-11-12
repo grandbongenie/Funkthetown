@@ -18,7 +18,7 @@
 
 
 <meta name="description" content="Funkthetown est une association, un organisme, un collectif ayant pour but de transmettre la culture musique afin de promouvoir la paix, l'amour et l'harmonie.
-Funthetown is an association, an organism, a collective which aim to transmit music culture to promote peace, love and harmony.
+Funthetown is an association, an organism, a collective which aim to transmit music culture to promote paix harmonie.
 Funthetown 是一個協會，一個有機體，一個集體，旨在傳播音樂文化，以促進和平，愛和和諧。
 Funthetown は、音楽文化を伝えて平和、愛、調和を促進する団体、生物、集団です。
 Funthetown es una asociación, un organismo, un colectivo cuyo objetivo es transmitir la cultura musical para promover la paz, el amor y la armonía.
@@ -36,95 +36,28 @@ Funthetown jẹ ajọṣepọ kan, ohun-ara-ara, ẹgbẹ kan ti o fẹ lati ṣ
 
 <link rel="stylesheet" href="css/fonts.css" />
 <link rel="stylesheet" href="css/slicknav.css" />
+<link rel="stylesheet" href="css/navigation.css?v=20260515-mobile1" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <link rel="stylesheet" href="css/style-sub_conf.css" />
-
-<style type="text/css">
-
-#my_popup
-{
-	width:1500px;
-	opacity:1;
-	animation-duration: 3s;
-}
-
-@media screen and (max-width: 600px) {
-	#my_popup
-	{	
-		orientation: landscape;
-		width:300px;
-		opacity:1;
-	}
-	/* body
-	{
-	  background-size: 900%;
-	  
-	} */
-}
-
-@media screen and (max-width: 800px) and  (min-width: 600px){
-	#my_popup
-	{
-		width:600px;
-		opacity:1;
-	}
-	/* body
-	{
-	  background-size: 400%;
-	  
-	} */
-}
-@media screen and (max-width: 1000px) and  (min-width: 800px){
-	#my_popup
-	{
-		width:800px;
-		opacity:1;
-		
-	}
-}
-</style>
 <script src="https://kit.fontawesome.com/26d3fed8b3.js" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
 <script src="js/jquery.slicknav.min.js"></script>
 </head>
 
-<body>
+<body data-nav-active="music">
 	<!--<img id="bg" alt="" src="images/bkg.jpg" />-->
    
-	
-
 	<div class="container">
-        <div class="menu-top">
-            <ul id="menu">
-                <li><a class="scroll" href="https://events.funkthetown.net/" target="_blank">events</a></li>
-                <li><a class="scroll" href="Funkthetown Music.html">music</a></li>
-                <li><a class="scroll" href="https://funkthetownclothes.myspreadshop.fr/" target="_blank">clothes</a></li>
-                <li><a class="scroll" href="https://discord.gg/qdRW8cN" target="_blank">network</a></li>
-            </ul>
-        </div>  
-		    
-			<a href="index.html" ><img id="logo" src="images/logo.png"/></a>
-			<div id="thumbs">
-			<p>Nous vous confirmons, votre inscription a la NewsLetter Funkthetown. <br/>
-			<p>merci de choisir un nom pour vister le site
-			</p>	
-			</p>
-		   </div>
- 	
-        <div class="clearer"></div>
-        <div class="menu-bottom">
-			<ul id="menu2">
-                <li><a class="scroll" href="https://radio.funkthetown.net/" target="_blank">radio</a></li>
-                <li><a class="scroll" href="Funkthetown Studio.html">studio</a></li>
-                <li><a class="scroll" href="Funkthetown Dream.html">dream</a></li>
-                <li><a class="scroll" href="#school">school</a></li>
-                <li><a class="scroll" href="#action">action</a></li>
-            </ul>
-        </div> 
-     </div>
+		<a href="Funkthetown Music.html" ><img id="logo" src="images/Funkthetown-GIEV2.png"/></a>
+		<div id="thumbs">
+		<p>Nous vous confirmons, votre inscription a la NewsLetter Funkthetown. <br/>
+		<p>merci de choisir un nom pour vister le site
+		</p>	
+		</p>
+	   </div>
+	 </div>
 	
 	
 	 
@@ -132,17 +65,7 @@ Funthetown jẹ ajọṣepọ kan, ohun-ara-ara, ẹgbẹ kan ti o fẹ lati ṣ
 
 
 </body>
-<script>
-    var combinedMenu = $('#menu').clone();
-    var secondMenu = $('#menu2').clone();
-
-    secondMenu.children('li').appendTo(combinedMenu);
-
-    combinedMenu.slicknav({
-        duplicate: false
-    });
-
-</script>
+<script src="js/navigation.js?v=20260515-mobile1" defer></script>
 
 
 </html>

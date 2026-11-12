@@ -20,50 +20,8 @@
 
 <link rel="stylesheet" href="css/style-music.css" />
 <link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/navigation.css" />
 
-
-<style type="text/css">
-
-#my_popup
-{
-	width:1500px;
-	opacity:0.2;
-}
-
-@media screen and (max-width: 600px) {
-	#my_popup
-	{
-		width:300px;
-		opacity:0.2;
-	}
-	body
-	{
-	  background-size: 900%;
-	  
-	}
-}
-
-@media screen and (max-width: 800px) and  (min-width: 600px){
-	#my_popup
-	{
-		width:600px;
-		opacity:0.2;
-	}
-	body
-	{
-	  background-size: 400%;
-	  
-	}
-}
-@media screen and (max-width: 1000px) and  (min-width: 800px){
-	#my_popup
-	{
-		width:800px;
-		opacity:0.2;
-		
-	}
-}
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="js/jquery.slicknav.min.js"></script>
 
@@ -72,94 +30,91 @@
 
 </head>
 
-<body>
+<body data-nav-active="music">
+	<audio id="musicAmbientAudio" preload="auto">
+		<source src="Audio/Marw/Opentimes.wav" type="audio/wav" />
+	</audio>
 		
 	<!-- <img id="bg" alt="" src="images/COUVERTURE-PAGE-FACEBOOK-(rework-II).jpg" />--> 			
 	
-    <div class="container">
-        <div class="menu-top">
-            <ul id="menu">
-                <li><a class="scroll" href="https://events.funkthetown.net/" target="_blank">events</a></li>
-                <li><a class="scroll" href="Funkthetown Music.html">music</a></li>
-                <li><a class="scroll" href="https://funkthetownclothes.myspreadshop.fr/" target="_blank">clothes</a></li>
-                <li><a class="scroll" href="https://discord.gg/qdRW8cN" target="_blank" =>network</a></li>
-            </ul>
-        </div>
-        
-        <div class="clearer"></div>
-        <div class="menu-bottom">
-            <ul id="menu2">
-                <li><a class="scroll" href="https://radio.funkthetown.net" target="_blank">radio</a></li>
-                <li><a class="scroll" href="Funkthetown Studio.html">studio</a></li>
-                <li><a class="scroll" href="Funkthetown Dream.html">dream</a></li>
-                <li><a class="scroll" href="#school">school</a></li>
-                <li><a class="scroll" href="#action">action</a></li>
-            </ul>
-        </div>
-     </div>
-    
 	<div class="container2">
+		<div class="reseau">
+			<div class="fond-deco"></div>
 
+			<div class="noeud n2">
+				<a href="https://emtro.funkthetown.net" target="_blank" rel="noreferrer">
+					<img src="images/em-tro8LOvi-2.png" alt="Em Tro" />
+				</a>
+			</div>
 
-        <div id="marw">
-        <a href="https://marw.funkthetown.net" target="_blank"><img src="images/Marw/KIF_3081(rework2).jpg"></a>
-		<h1>Marw</h1>
+			<div class="noeud n3">
+				<a href="https://djflo.funkthetown.net" target="_blank" rel="noreferrer">
+					<img src="images/lOGO_Avatar_DjFlo_3.jpg" alt="DJ Flo" />
+				</a>
+			</div>
 
-        </div>
+			<div class="noeud n4">
+				<a href="https://marw.funkthetown.net" target="_blank" rel="noreferrer">
+					<img src="images/Marw/KIF_3081(rework2).jpg" alt="Marw" />
+					<span>Marw</span>
+				</a>
+			</div>
 
-         
-		<!-- <div id="FTTR">
-
-			<a href="https://funkthetown-recordings.bandcamp.com/" target="_blank"><img src="images/Logo-Funkthetown-Recordings(rework_Color_3).png"></a>
-		
-
-
-
-		</div> -->
-
-
- <div id="Weather">
-         <a href="https:weather.funkthetown.net" target="_blank"><img src="images/WEATHER_LOGO.jpg"/></a>
-		 <h1>Weather</h1>
-        </div>
-
-
-        <div id="Em_tro">
-         <a href="https:emtro.funkthetown.net" target="_blank"><img src="images/vISUEL_Em-tro(4).png"/></a>
-		 <h1>Em Tro</h1>
-        </div>
-
+			<div class="noeud n5">
+				<a href="https://weather.funkthetown.net" target="_blank" rel="noreferrer">
+					<img src="images/WEATHER_LOGO_redo.png" alt="Weather" />
+				</a>
+			</div>
+		</div>
+	</div>
 
 	
-   
-
-
-
-
-    </div>
-  
 
 </body>
 
-
 <script>
-	var combinedMenu = $('#menu').clone();
-	var secondMenu = $('#menu2').clone();
-	
-	secondMenu.children('li').appendTo(combinedMenu);
-	
-	combinedMenu.slicknav({
-		duplicate:false
-	});
-	$(document).ready(function() {
-	
-    });
+(function () {
+	var musicAmbientAudio = document.getElementById("musicAmbientAudio");
+	var hasStarted = false;
 
+	if (!musicAmbientAudio) {
+		return;
+	}
 
+	function cleanupFallbackListeners() {
+		document.removeEventListener("click", handleFirstInteraction, true);
+		document.removeEventListener("touchstart", handleFirstInteraction, true);
+		document.removeEventListener("pointerdown", handleFirstInteraction, true);
+		document.removeEventListener("keydown", handleFirstInteraction, true);
+	}
 
+	function startAudio() {
+		if (hasStarted) {
+			return;
+		}
 
+		hasStarted = true;
+		musicAmbientAudio.currentTime = 0;
+		musicAmbientAudio.play().then(function () {
+			cleanupFallbackListeners();
+		}).catch(function () {
+			hasStarted = false;
+		});
+	}
 
+	function handleFirstInteraction() {
+		startAudio();
+	}
+
+	document.addEventListener("click", handleFirstInteraction, true);
+	document.addEventListener("touchstart", handleFirstInteraction, true);
+	document.addEventListener("pointerdown", handleFirstInteraction, true);
+	document.addEventListener("keydown", handleFirstInteraction, true);
+	window.addEventListener("load", startAudio, { once: true });
+})();
 </script>
+
+<script src="js/navigation.js" defer></script>
             
 
 

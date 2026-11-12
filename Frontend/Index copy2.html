@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Funkthetown</title>
+<link rel="shortcut icon" type="image/x-icon" href="2.ico" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2899T3YLFP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2899T3YLFP');
+</script>
+
+<meta name="description" content="Funkthetown est une association, un organisme, un collectif ayant pour but de transmettre la culture musique afin de promouvoir la paix, l'amour et l'harmonie." />
+<meta name="keywords" content="Musique, FunkTheTown, Funk The Town, Funk, label, association" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style-index.css" />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/slicknav.css" />
+<link rel="stylesheet" href="css/navigation.css" />
+<style type="text/css">
+
+#video {
+	display: none;
+	width: 80%;
+	max-width: 800px;
+	height: 450px;
+	margin: 20px auto;
+}
+
+@media screen and (max-width: 600px) {
+	#video {
+		width: 95%;
+		height: 250px;
+	}
+}
+
+@media screen and (max-width: 800px) and  (min-width: 600px){
+	#video {
+		width: 90%;
+		height: 350px;
+	}
+}
+</style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+</head>
+
+<body data-nav-active="home">
+	 <div class="containertop"></div>
+
+	 <div class="animate__animated animate__flip"></div>
+
+	 <!-- Vidéo YouTube intégrée -->
+	 <iframe id="video" 
+	         src="https://www.youtube.com/embed/3zWh11S7E-I?enablejsapi=1" 
+	         frameborder="0" 
+	         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+	         allowfullscreen>
+	 </iframe>
+
+	 <div class="container2">
+		<div class="animate__animated animate__slideInDown">
+			<form action="/" method="post">
+				<div class="email-box">
+					<div>
+						<div class="label">Join our Newsletter</div>	
+						<i class="fas fa-envelope"></i>
+						<input id="email" class="tbox" type="email" name="email" value="" placeholder="Email">
+					</div>
+					<button id="emailSend" class="btn" type="submit" name="submit">Join</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+<script>
+	$(document).ready(function() {
+		$('.logo-img').on('click', function(){
+			document.querySelector('#video').style.display="block";	
+			// Pour YouTube iframe, on modifie le src pour autoplay
+			var iframe = document.querySelector('#video');
+			var src = iframe.src;
+			if(src.indexOf('autoplay=1') === -1) {
+				iframe.src = src + '&autoplay=1';
+			}
+		})
+	});
+</script>
+
+<script src="js/inscription.js"></script>
+<script src="js/navigation.js" defer></script>
+
+</html>

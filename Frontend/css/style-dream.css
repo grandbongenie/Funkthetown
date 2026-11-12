@@ -85,11 +85,6 @@
 
 
 
-#my_popup
-{
-	opacity:0.5;
-	/*top: 50px !important;*/
-}
 @media screen and (orientation: portrait) {
   .logo-img { max-width: 90%; }
 }
@@ -107,17 +102,19 @@
   min-width: 100%;
   min-height: 100%;
 }
+html,
 body
 {
-	
+	background:
+		linear-gradient(135deg, rgba(53, 132, 255, 0.96) 0%, rgba(53, 132, 255, 0.88) 100%) !important;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  background-position:center center;
+  background-size: cover !important;
+  background-position:center center !important;
   height:100%;
   overflow-y:hidden;
-  background-color:rgb(95,45,85);
+  background-color:#3584ff !important;
 }
 /* reset */
 html, body, div, span, applet, object, iframe,
@@ -301,6 +298,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 
 
+	}
+
+	.ml10 {
+		font-size: 2.766em;
 	}
 
 

@@ -19,9 +19,31 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style-studio.css">
+    <link rel="stylesheet" href="css/navigation.css">
     
     <link rel="stylesheet" href="css/slicknav.css" />
+    <script src="/webrtc/live/pdj/reader.js"></script>
     <style type="text/css">
+        :root {
+            --studio-nav-offset: 82px;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body,
+        body.has-site-nav,
+        body.has-site-nav[data-nav-active="studio"] {
+            background: #F9EFDD !important;
+            background-image: none !important;
+        }
+
         @media screen and (max-width: 600px) {
 
 
@@ -36,6 +58,128 @@
                 background-size: 400%;
             }
         }
+
+        .studio-player-wrap {
+            position: fixed;
+            top: var(--studio-nav-offset);
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.25rem 2rem 2rem;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .studio-activate-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: rgba(249, 239, 221, 0.72);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 20;
+            transition: opacity 220ms ease, visibility 220ms ease;
+        }
+
+        .studio-activate-overlay.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .studio-activate-button {
+            appearance: none;
+            border: 0;
+            border-radius: 999px;
+            padding: 1.15rem 2rem;
+            min-width: 15rem;
+            background: linear-gradient(135deg, #20130f 0%, #4a2d20 100%);
+            color: #f9efdd;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 1.25rem 3rem rgba(32, 19, 15, 0.22);
+            transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+        }
+
+        .studio-activate-button:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 1.5rem 3.5rem rgba(32, 19, 15, 0.28);
+            filter: brightness(1.04);
+        }
+
+        .studio-activate-button:active {
+            transform: translateY(0);
+        }
+
+        .studio-player-shell {
+            position: relative;
+            width: min(88vw, 1600px);
+            height: min(calc(100vh - var(--studio-nav-offset) - 2.5rem), calc(100dvh - var(--studio-nav-offset) - 2.5rem));
+            min-height: 320px;
+            border-radius: 25rem;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .studio-player-frame {
+            width: 100%;
+            height: 100%;
+            padding: 0.85rem;
+            box-sizing: border-box;
+            background: transparent;
+            border-radius: calc(25rem - 0.85rem);
+            overflow: hidden;
+        }
+
+        .studio-player {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            display: block;
+            border: 0;
+            object-fit: contain;
+            border-radius: inherit;
+            overflow: hidden;
+            opacity: 0.9;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            transform: translateZ(0);
+        }
+
+        @media screen and (max-width: 1024px) {
+            .studio-player-shell {
+                width: 92vw;
+                border-radius: 7.5rem;
+            }
+
+            .studio-player-frame {
+                border-radius: calc(7.5rem - 0.85rem);
+            }
+        }
+
+        @media screen and (max-width: 640px) {
+            .studio-player-wrap {
+                padding: 1rem 1rem 1.25rem;
+            }
+
+            .studio-player-shell {
+                width: 100%;
+                height: min(calc(100vh - var(--studio-nav-offset) - 1.5rem), calc(100dvh - var(--studio-nav-offset) - 1.5rem));
+                border-radius: 5rem;
+            }
+
+            .studio-player-frame {
+                border-radius: calc(5rem - 0.85rem);
+            }
+        }
     </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="js/jquery.slicknav.min.js"></script>
@@ -43,86 +187,94 @@
 
 </head>
 
-<body>
-    
-
-  
-    <div class="container">
-        <div class="menu-top">
-            <ul id="menu">
-                <li><a class="scroll" href="https://events.funkthetown.net/" target="_blank">events</a></li>
-                <li><a class="scroll" href="Funkthetown Music.html">music</a></li>
-                <li><a class="scroll" href="https://funkthetownclothes.myspreadshop.fr/" target="_blank">clothes</a></li>
-                <li><a class="scroll" href="https://discord.gg/qdRW8cN" target="_blank">network</a></li>
-            </ul>
+<body data-nav-active="studio">
+    <div class="studio-activate-overlay" id="studio-activate-overlay">
+        <button class="studio-activate-button" id="studio-activate-button" type="button">Activer Stream</button>
+    </div>
+    <div class="studio-player-wrap">
+        <div class="studio-player-shell">
+            <div class="studio-player-frame">
+                <video id="studio-player" class="studio-player" autoplay playsinline></video>
+            </div>
         </div>
-
-
-    
-        
-        <div class="clearer"></div>
-        <div class="menu-bottom">
-            <ul id="menu2">
-                <li><a class="scroll" href="https://radio.funkthetown.net/" target="_blank">radio</a></li>
-                <li><a class="scroll" href="Funkthetown Studio.html">studio</a></li>
-                <li><a class="scroll" href="Funkthetown Dream.html">dream</a></li>
-                <li><a class="scroll" href="#school">school</a></li>
-                <li><a class="scroll" href="#action">action</a></li>
-            </ul>
-        </div>
-     </div>
-
-
-
-     <div class="containerlogos">
-
-    
-    
-
-
-
-        <div class="categorie1">
-            
-            <a href="https://aone.funkthetown.net/"><img src="images/LOGO_AONE-(REWORK-IV)_website.jpg" alt="LOGO_AONE"/></a>
-            
-        </div>
-
-        <div class="categorie2">
-
-            
-            <a href="Funkthetown_pdj.html"><img src="images/LOGO_PIECE-DE-JEUX_1.jpg" alt="LOGO_PIECE-DE-JEUX"/></a>
-            
-
-
-
-        </div>
-
-        <div class="categorie3">
-
-            
-            <a href="https://funkthetown.dance"><img src="images/LOGO_LA-COMPAGNIE-DE-DANSE_2.jpg" alt="LOGO_LA-COMPAGNIE-DE-DANSE_2"/></a>
-            
-
-
-        </div>
-    </div> 
-    
-
-
+    </div>
 
 </body>
 
 
+<script src="js/navigation.js" defer></script>
 <script>
-    var combinedMenu = $('#menu').clone();
-    var secondMenu = $('#menu2').clone();
+    (function () {
+        var root = document.documentElement;
+        var video = document.getElementById('studio-player');
+        var activateOverlay = document.getElementById('studio-activate-overlay');
+        var activateButton = document.getElementById('studio-activate-button');
+        var streamWhepUrl = 'https://funkthetown.net/webrtc/live/pdj_webrtc/whep';
+        var reader = null;
 
-    secondMenu.children('li').appendTo(combinedMenu);
+        function syncStudioOffset() {
+            var nav = document.querySelector('.ft-nav');
 
-    combinedMenu.slicknav({
-        duplicate: false
-    });
+            if (!nav) {
+                return;
+            }
 
+            root.style.setProperty('--studio-nav-offset', Math.max(nav.offsetHeight - 2, 0) + 'px');
+        }
+
+        function tryPlayWithSound() {
+            video.muted = false;
+            video.volume = 1;
+
+            var playPromise = video.play();
+            if (playPromise && typeof playPromise.then === 'function') {
+                playPromise.then(function () {
+                    if (activateOverlay) {
+                        activateOverlay.classList.add('is-hidden');
+                    }
+                });
+                playPromise.catch(function () {
+                    video.muted = true;
+                    video.volume = 0;
+                });
+            }
+        }
+
+        function startWebRtc() {
+            if (typeof window.MediaMTXWebRTCReader !== 'function') {
+                return;
+            }
+
+            reader = new window.MediaMTXWebRTCReader({
+                url: streamWhepUrl,
+                onError: function () {
+                    if (reader) {
+                        reader.close();
+                        reader = null;
+                    }
+                },
+                onTrack: function (evt) {
+                    video.srcObject = evt.streams[0];
+                    tryPlayWithSound();
+                }
+            });
+        }
+
+        window.addEventListener('load', syncStudioOffset);
+        window.addEventListener('resize', syncStudioOffset);
+        document.addEventListener('click', tryPlayWithSound, { once: true, capture: true });
+        document.addEventListener('touchstart', tryPlayWithSound, { once: true, capture: true });
+        document.addEventListener('pointerdown', tryPlayWithSound, { once: true, capture: true });
+        if (activateButton) {
+            activateButton.addEventListener('click', function () {
+                tryPlayWithSound();
+            });
+        }
+        window.setTimeout(syncStudioOffset, 0);
+        startWebRtc();
+        window.setTimeout(tryPlayWithSound, 250);
+        window.setTimeout(tryPlayWithSound, 1200);
+    })();
 </script>
 
 
