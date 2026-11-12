@@ -150,6 +150,48 @@
 	pointer-events: none;
 }
 
+/* Bouton "passer l'intro" : symetrique du logo (meme marge, a gauche), arrive par la gauche */
+.intro-overlay__skip {
+	--skip-side: 10.5rem;
+	--skip-bottom: 6rem;
+	--skip-logo: clamp(75px, 8.5vw, 140px);
+	position: absolute;
+	left: var(--skip-side);
+	right: auto;
+	bottom: calc(var(--skip-bottom) + var(--skip-logo) / 2);
+	z-index: 4;
+	border: 1px solid rgba(255, 255, 255, 0.72);
+	background: rgba(0, 0, 0, 0.28);
+	color: #ffffff;
+	padding: 0.95rem 1.7rem;
+	border-radius: 999px;
+	font-family: 'Arial Rounded MT Bold Regular';
+	font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+	letter-spacing: 0.08em;
+	text-transform: lowercase;
+	white-space: nowrap;
+	cursor: pointer;
+	backdrop-filter: blur(8px);
+	transform: translateY(60%);
+	animation: introSkipSweep 1.4s cubic-bezier(0.2, 0.9, 0.2, 1) 0.8s both;
+}
+
+.intro-overlay__skip:hover {
+	background: rgba(255, 255, 255, 0.12);
+}
+
+@keyframes introSkipSweep {
+	0% {
+		opacity: 0;
+		transform: translateX(calc(-100% - var(--skip-side) - 2rem)) translateY(60%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0) translateY(60%);
+	}
+}
+
 .intro-overlay__panel {
 	position: relative;
 	z-index: 3;
@@ -185,6 +227,10 @@
 
 .intro-overlay__button:hover {
 	background: rgba(255, 255, 255, 0.12);
+}
+
+.intro-overlay.is-hidden .intro-overlay__skip {
+	pointer-events: none;
 }
 
 .intro-overlay.is-playing .intro-overlay__panel {
@@ -269,8 +315,8 @@
 
 @media (min-width: 901px) {
 	.home-background-image--top {
-		top: 90px;
-		height: calc(100% - 90px);
+		top: 98px;
+		height: calc(100% - 98px);
 		object-fit: contain;
 		object-position: top center;
 	}
@@ -394,6 +440,12 @@ body.newsletter-modal-open {
 		width: 72px;
 	}
 
+	.intro-overlay__skip {
+		--skip-side: 1rem;
+		--skip-bottom: 1rem;
+		--skip-logo: 72px;
+	}
+
 	.home-background {
 		top: 0;
 	}
@@ -482,6 +534,12 @@ body.newsletter-modal-open {
 		width: clamp(56px, 16vw, 90px);
 	}
 
+	.intro-overlay__skip {
+		--skip-side: 1.25rem;
+		--skip-bottom: 1.25rem;
+		--skip-logo: clamp(56px, 16vw, 90px);
+	}
+
 	.logo {
 		width: 100%;
 	}
@@ -529,6 +587,12 @@ body.newsletter-modal-open {
 		left: auto;
 		bottom: calc(50% - ((100vw - 2rem) * 9 / 32) - 0.1rem);
 		width: clamp(56px, 16vw, 90px);
+	}
+
+	.intro-overlay__skip {
+		--skip-side: 1.6rem;
+		--skip-bottom: calc(50% - ((100vw - 2rem) * 9 / 32) - 0.1rem);
+		--skip-logo: clamp(56px, 16vw, 90px);
 	}
 }
 

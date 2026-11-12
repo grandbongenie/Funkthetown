@@ -52,6 +52,7 @@ Funthetown jẹ ajọṣepọ kan, ohun-ara-ara, ẹgbẹ kan ti o fẹ lati ṣ
 			<source src="Video/FunkthetownRadioNetShow.web.mp4" type="video/mp4" />
 		</video>
 		<img class="intro-overlay__logo" src="images/F2T_Logocircle.png" alt="" aria-hidden="true" />
+		<button id="introSkipButton" class="intro-overlay__skip" type="button">passer l'intro</button>
 		<div class="intro-overlay__panel">
 			<p class="intro-overlay__title">marhaba@funkthetown.net</p>
 			<button id="introSoundButton" class="intro-overlay__button" type="button">activer le son</button>
@@ -301,6 +302,14 @@ allBoxes.forEach(box => {
 	}
 
 	introSoundButton.addEventListener("click", startWithSound);
+	var introSkipButton = document.getElementById("introSkipButton");
+	if (introSkipButton) {
+		introSkipButton.addEventListener("click", function (event) {
+			event.stopPropagation();
+			homeAudioEnabled = true;
+			skipIntro();
+		});
+	}
 	introVideo.addEventListener("ended", closeIntro);
 	introVideo.addEventListener("click", skipIntro);
 	introOverlay.addEventListener("click", function (event) {
